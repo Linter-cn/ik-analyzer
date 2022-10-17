@@ -3,19 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.wltea.analyzer</groupId>
+    <groupId>io.github.linter-cn</groupId>
     <artifactId>ik-analyzer</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>ik-analyzer</name>
     <description>IK Analyzer</description>
-
-    <properties>
-        <lucene.version>9.4.0</lucene.version>
-        <log4j.version>2.18.0</log4j.version>
-        <maven.compiler.version>11</maven.compiler.version>
-    </properties>
 
     <licenses>
         <license>
@@ -24,6 +18,31 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <developers>
+        <developer>
+            <name>INFINI Labs</name>
+            <email>hello@infini.ltd</email>
+            <organization>INFINI Labs</organization>
+            <organizationUrl>https://infinilabs.com</organizationUrl>
+        </developer>
+        <developer>
+            <name>Linter-cn</name>
+            <email>1948288473@qq.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:Linter-cn/ik-analyzer.git</connection>
+        <developerConnection>scm:git:git@github.com:Linter-cn/ik-analyzer.git</developerConnection>
+        <url>https://github.com/Linter-cn/ik-analyzer</url>
+    </scm>
+
+    <properties>
+        <lucene.version>9.4.0</lucene.version>
+        <log4j.version>2.18.0</log4j.version>
+        <maven.compiler.version>11</maven.compiler.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -43,7 +62,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.10.0</version>
                 <configuration>
                     <source>${maven.compiler.version}</source>
                     <target>${maven.compiler.version}</target>
@@ -54,28 +73,28 @@
 
     <profiles>
         <profile>
-            <id>release</id>
+            <id>ossrh</id>
             <distributionManagement>
                 <snapshotRepository>
-                    <id>oss</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+                    <id>ossrh</id>
+                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
                 </snapshotRepository>
                 <repository>
-                    <id>oss</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                    <id>ossrh</id>
+                    <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
                 </repository>
             </distributionManagement>
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-release-plugin</artifactId>
-                        <version>2.5.3</version>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.13</version>
+                        <extensions>true</extensions>
                         <configuration>
-                            <autoVersionSubmodules>true</autoVersionSubmodules>
-                            <useReleaseProfile>false</useReleaseProfile>
-                            <releaseProfiles>release</releaseProfiles>
-                            <goals>deploy</goals>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
                         </configuration>
                     </plugin>
                     <plugin>
@@ -95,7 +114,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>3.2.1</version>
+                        <version>3.2.0</version>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
@@ -108,7 +127,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.4.1</version>
+                        <version>3.4.0</version>
                         <executions>
                             <execution>
                                 <id>attach-javadocs</id>
