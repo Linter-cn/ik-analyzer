@@ -26,7 +26,6 @@
 package org.wltea.analyzer.core;
 
 /**
- *
  * 字符集识别工具类
  */
 class CharacterUtil {
@@ -43,6 +42,7 @@ class CharacterUtil {
 
     /**
      * 识别字符类型
+     *
      * @return int CharacterUtil定义的字符类型常量
      */
     static int identifyCharType(char input) {

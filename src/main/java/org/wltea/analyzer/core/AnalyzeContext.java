@@ -41,19 +41,23 @@ class AnalyzeContext {
 
     //默认缓冲区大小
     private static final int BUFF_SIZE = 4096;
+
     //缓冲区耗尽的临界值
     private static final int BUFF_EXHAUST_CRITICAL = 100;
 
     //字符串读取缓冲
     private char[] segmentBuff;
+
     //字符类型数组
     private int[] charTypes;
 
     //记录Reader内已分析的字串总长度
     //在分多段分析词元时，该变量累计当前的segmentBuff相对于reader起始位置的位移
     private int buffOffset;
+
     //当前缓冲区位置指针
     private int cursor;
+
     //最近一次读入的,可处理的字串长度
     private int available;
 
@@ -63,10 +67,13 @@ class AnalyzeContext {
 
     //原始分词结果集合，未经歧义处理
     private QuickSortSet orgLexemes;
+
     //LexemePath位置索引表
     private final Map<Integer, LexemePath> pathMap;
+
     //最终分词结果集
     private final LinkedList<Lexeme> results;
+
     //分词器配置项
     private final Configuration configuration;
 
@@ -102,6 +109,7 @@ class AnalyzeContext {
 
     /**
      * 根据context的上下文情况，填充segmentBuff
+     *
      * @return 返回待分析的（有效的）字串长度
      */
     int fillBuffer(Reader reader) throws IOException {

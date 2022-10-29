@@ -30,8 +30,10 @@ class QuickSortSet {
 
     //链表头
     private Cell head;
+
     //链表尾
     private Cell tail;
+
     //链表的实际大小
     private int size;
 
@@ -200,7 +202,9 @@ class QuickSortSet {
     static class Cell implements Comparable<Cell> {
 
         private Cell prev;
+
         private Cell next;
+
         private final Lexeme lexeme;
 
         Cell(Lexeme lexeme) {

@@ -27,8 +27,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
@@ -58,14 +56,21 @@ public class Dictionary {
     private static final Logger logger = LogManager.getLogger(Dictionary.class);
 
     private static final String PATH_DIC_MAIN = "main.dic";
+
     private static final String PATH_DIC_SURNAME = "surname.dic";
+
     private static final String PATH_DIC_QUANTIFIER = "quantifier.dic";
+
     private static final String PATH_DIC_SUFFIX = "suffix.dic";
+
     private static final String PATH_DIC_PREP = "preposition.dic";
+
     private static final String PATH_DIC_STOP = "stop_word.dic";
 
     private final static String FILE_NAME = "IKAnalyzer.cfg.xml";
+
     private final static String EXT_DICT = "ext_dict";
+
     private final static String EXT_STOP = "ext_stop_words";
 
     private final Properties props;
@@ -204,6 +209,9 @@ public class Dictionary {
     /**
      * 检索匹配主词典
      *
+     * @param charArray 字符数组
+     * @param begin     开始位置
+     * @param length    长度
      * @return Hit 匹配结果描述
      */
     public Hit matchInMainDict(char[] charArray, int begin, int length) {
@@ -213,6 +221,9 @@ public class Dictionary {
     /**
      * 检索匹配量词词典
      *
+     * @param charArray 字符数组
+     * @param begin     开始位置
+     * @param length    长度
      * @return Hit 匹配结果描述
      */
     public Hit matchInQuantifierDict(char[] charArray, int begin, int length) {
@@ -222,6 +233,9 @@ public class Dictionary {
     /**
      * 从已匹配的Hit中直接取出DictSegment，继续向下匹配
      *
+     * @param charArray    字符数组
+     * @param currentIndex 当前位置
+     * @param matchedHit   已匹配的Hit
      * @return Hit
      */
     public Hit matchWithHit(char[] charArray, int currentIndex, Hit matchedHit) {
@@ -232,6 +246,9 @@ public class Dictionary {
     /**
      * 判断是否是停止词
      *
+     * @param charArray 字符数组
+     * @param begin     开始位置
+     * @param length    长度
      * @return boolean
      */
     public boolean isStopWord(char[] charArray, int begin, int length) {

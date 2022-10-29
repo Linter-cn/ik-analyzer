@@ -31,12 +31,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *  中文-日韩文子分词器
+ * 中文-日韩文子分词器
  */
 class CJKSegmenter implements ISegmenter {
 
     //子分词器标签
     static final String SEGMENTER_NAME = "CJK_SEGMENTER";
+
     //待处理的分词hit队列
     private final List<Hit> tmpHits;
 

@@ -26,13 +26,13 @@ package org.wltea.analyzer.core;
 import java.util.Arrays;
 
 /**
- *
  * 英文字符及阿拉伯数字子分词器
  */
 class LetterSegmenter implements ISegmenter {
 
     //子分词器标签
     static final String SEGMENTER_NAME = "LETTER_SEGMENTER";
+
     //链接符号
     private static final char[] Letter_Connector = new char[]{'#', '&', '+', '-', '.', '@', '_'};
 
@@ -45,6 +45,7 @@ class LetterSegmenter implements ISegmenter {
      * 当start > -1 时，标识当前的分词器正在处理字符
      */
     private int start;
+
     /*
      * 记录词元结束位置
      * end记录的是在词元中最后一个出现的Letter但非Sign_Connector的字符的位置
@@ -118,7 +119,7 @@ class LetterSegmenter implements ISegmenter {
     /**
      * 处理数字字母混合输出
      * 如：windos2000 | linliangyi2005@gmail.com
-     //	 * @param input
+     * //	 * @param input
      */
     private boolean processMixLetter(AnalyzeContext context) {
         boolean needLock = false;
@@ -248,17 +249,17 @@ class LetterSegmenter implements ISegmenter {
             context.addLexeme(newLexeme);
             this.arabicStart = -1;
             this.arabicEnd = -1;
-		}
+        }
 
-		//判断是否锁定缓冲区
-		if(this.arabicStart == -1 && this.arabicEnd == -1){
-			//对缓冲区解锁
-			needLock = false;
-		}else{
-			needLock = true;
-		}
-		return needLock;
-	}
+        //判断是否锁定缓冲区
+        if (this.arabicStart == -1 && this.arabicEnd == -1) {
+            //对缓冲区解锁
+            needLock = false;
+        } else {
+            needLock = true;
+        }
+        return needLock;
+    }
 
     /**
      * 判断是否是字母连接符号

@@ -31,33 +31,46 @@ public class Lexeme implements Comparable<Lexeme> {
     //lexemeType常量
     //未知
     public static final int TYPE_UNKNOWN = 0;
+
     //英文
     public static final int TYPE_ENGLISH = 1;
+
     //数字
     public static final int TYPE_ARABIC = 2;
+
     //英文数字混合
     public static final int TYPE_LETTER = 3;
+
     //中文词元
     public static final int TYPE_CNWORD = 4;
+
     //中文单字
     public static final int TYPE_CNCHAR = 64;
+
     //日韩文字
     public static final int TYPE_OTHER_CJK = 8;
+
     //中文数词
     public static final int TYPE_CNUM = 16;
+
     //中文量词
     public static final int TYPE_COUNT = 32;
+
     //中文数量词
     public static final int TYPE_CQUAN = 48;
 
     //词元的起始位移
     private int offset;
+
     //词元的相对起始位置
     private int begin;
+
     //词元的长度
     private int length;
+
     //词元文本
     private String lexemeText;
+
     //词元类型
     private int lexemeType;
 
@@ -137,7 +150,8 @@ public class Lexeme implements Comparable<Lexeme> {
 
     /**
      * 获取词元在文本中的起始位置
-     * @return int
+     *
+     * @return int 词元在文本中的起始位置
      */
     public int getBeginPosition() {
         return offset + begin;
@@ -149,7 +163,8 @@ public class Lexeme implements Comparable<Lexeme> {
 
     /**
      * 获取词元在文本中的结束位置
-     * @return int
+     *
+     * @return int 词元在文本中的结束位置
      */
     public int getEndPosition() {
         return offset + begin + length;
@@ -157,7 +172,8 @@ public class Lexeme implements Comparable<Lexeme> {
 
     /**
      * 获取词元的字符长度
-     * @return int
+     *
+     * @return int 词元的字符长度
      */
     public int getLength() {
         return this.length;
@@ -172,7 +188,8 @@ public class Lexeme implements Comparable<Lexeme> {
 
     /**
      * 获取词元的文本内容
-     * @return String
+     *
+     * @return String 词元的文本内容
      */
     public String getLexemeText() {
         if (lexemeText == null) {
@@ -193,7 +210,8 @@ public class Lexeme implements Comparable<Lexeme> {
 
     /**
      * 获取词元类型
-     * @return int
+     *
+     * @return int 元类型
      */
     public int getLexemeType() {
         return lexemeType;
@@ -201,7 +219,8 @@ public class Lexeme implements Comparable<Lexeme> {
 
     /**
      * 获取词元类型标示字符串
-     * @return String
+     *
+     * @return String 词元类型标示字符串
      */
     public String getLexemeTypeString() {
         switch (lexemeType) {
@@ -244,6 +263,9 @@ public class Lexeme implements Comparable<Lexeme> {
 
     /**
      * 合并两个相邻的词元
+     *
+     * @param l 词元
+     * @param lexemeType 词元类型
      * @return boolean 词元是否成功合并
      */
     public boolean append(Lexeme l, int lexemeType) {
@@ -256,9 +278,6 @@ public class Lexeme implements Comparable<Lexeme> {
         }
     }
 
-    /**
-     *
-     */
     public String toString() {
         return this.getBeginPosition() + "-" + this.getEndPosition() +
                 " : " + this.lexemeText + " : \t" +

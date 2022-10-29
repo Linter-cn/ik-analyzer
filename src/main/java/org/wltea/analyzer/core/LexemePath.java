@@ -30,8 +30,10 @@ class LexemePath extends QuickSortSet implements Comparable<LexemePath> {
 
     //起始位置
     private int pathBegin;
+
     //结束
     private int pathEnd;
+
     //词元链的有效字符长度
     private int payloadLength;
 

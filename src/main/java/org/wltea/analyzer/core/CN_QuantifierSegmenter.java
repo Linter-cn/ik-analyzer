@@ -32,7 +32,6 @@ import org.wltea.analyzer.dic.Dictionary;
 import org.wltea.analyzer.dic.Hit;
 
 /**
- *
  * 中文数量词子分词器
  */
 class CN_QuantifierSegmenter implements ISegmenter {
@@ -42,6 +41,7 @@ class CN_QuantifierSegmenter implements ISegmenter {
 
     //中文数词
     private static final String Chn_Num = "一二两三四五六七八九十零壹贰叁肆伍陆柒捌玖拾百千万亿拾佰仟萬億兆卅廿";//Cnum
+
     private static final Set<Character> ChnNumberChars = new HashSet<Character>();
 
     static {
@@ -57,6 +57,7 @@ class CN_QuantifierSegmenter implements ISegmenter {
      * 当start > -1 时，标识当前的分词器正在处理字符
      */
     private int nStart;
+
     /*
      * 记录词元结束位置
      * end记录的是在词元中最后一个出现的合理的数词结束

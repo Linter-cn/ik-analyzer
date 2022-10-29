@@ -30,8 +30,10 @@ public class Hit {
 
     //Hit不匹配
     private static final int UNMATCH = 0x00000000;
+
     //Hit完全匹配
     private static final int MATCH = 0x00000001;
+
     //Hit前缀匹配
     private static final int PREFIX = 0x00000010;
 
@@ -40,10 +42,12 @@ public class Hit {
 
     //记录词典匹配过程中，当前匹配到的词典分支节点
     private DictSegment matchedDictSegment;
+
     /*
      * 词段开始位置
      */
     private int begin;
+
     /*
      * 词段的结束位置
      */
@@ -51,42 +55,39 @@ public class Hit {
 
     /**
      * 判断是否完全匹配
+     *
+     * @return 是否完全匹配
      */
     public boolean isMatch() {
         return (this.hitState & MATCH) > 0;
     }
 
-    /**
-     *
-     */
     public void setMatch() {
         this.hitState = this.hitState | MATCH;
     }
 
     /**
      * 判断是否是词的前缀
+     *
+     * @return 是否是词的前缀
      */
     public boolean isPrefix() {
         return (this.hitState & PREFIX) > 0;
     }
 
-    /**
-     *
-     */
     public void setPrefix() {
         this.hitState = this.hitState | PREFIX;
     }
 
     /**
      * 判断是否是不匹配
+     *
+     * @return 否是不匹配
      */
     public boolean isUnmatch() {
         return this.hitState == UNMATCH;
     }
 
-    /**
-     *
-     */
     public void setUnmatch() {
         this.hitState = UNMATCH;
     }
