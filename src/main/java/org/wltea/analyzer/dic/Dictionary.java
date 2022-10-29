@@ -166,7 +166,6 @@ public class Dictionary {
     private List<String> getDictionaries(String configKey) {
         String dictCfg = getProperty(configKey);
         List<String> dictFiles = new ArrayList<>(2);
-        ClassLoader classLoader = this.getClass().getClassLoader();
         if (dictCfg != null) {
             String[] filePaths = dictCfg.split(";");
             for (String filePath : filePaths) {
@@ -175,17 +174,7 @@ public class Dictionary {
                     if (filePath.startsWith("/")) {
                         filePath = filePath.substring(1);
                     }
-                    URL url = classLoader.getResource(filePath);
-                    if (url == null) {
-                        logger.error("ik-analyzer: " + filePath + " not found");
-                        continue;
-                    }
-                    try {
-                        Path file = Path.of(url.toURI());
-                        walkFileTree(dictFiles, file);
-                    } catch (URISyntaxException e) {
-                        logger.error("ik-analyzer: " + filePath + " loading failed", e);
-                    }
+                    dictFiles.add(filePath);
                 }
             }
         }
@@ -264,7 +253,7 @@ public class Dictionary {
         for (String extDictName : extDictFiles) {
             // 读取扩展词典文件
             logger.info("[Dict Loading] " + extDictName);
-            loadDictFile(_MainDict, extDictName, null, false, "Extra Dict");
+            loadDictFile(_MainDict, extDictName, this.getClass().getClassLoader(), false, "Extra Dict");
         }
     }
 
@@ -282,7 +271,7 @@ public class Dictionary {
         List<String> extStopWordDictFiles = getExtStopWordDictionaries();
         for (String extStopWordDictName : extStopWordDictFiles) {
             logger.info("[Dict Loading] " + extStopWordDictName);
-            loadDictFile(_StopWords, extStopWordDictName, null, false, "Extra Stopwords");
+            loadDictFile(_StopWords, extStopWordDictName, this.getClass().getClassLoader(), false, "Extra Stopwords");
         }
     }
 
