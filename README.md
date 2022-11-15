@@ -10,9 +10,9 @@ API（[TokenizerUtil](https://hutool.cn/docs/?from_wecom=1#/extra/%E4%B8%AD%E6%9
 ```xml
 
 <dependency>
-    <groupId>org.wltea.analyzer</groupId>
+  <groupId>io.github.linter-cn</groupId>
     <artifactId>ik-analyzer</artifactId>
-    <version>1.0</version>
+  <version>1.0</version>
 </dependency>
 ```
 
